@@ -860,33 +860,41 @@
       
       const videoFrame = document.getElementById('videoFrame');
       if (state.isOnline) {
-        const domains = ['watchit.my', 'thedaddy.top', 'daddylivestream.com', 'sportybet.top', 'hoofoot.ru', 'teledeportes.top'];
-        let loaded = false;
-        
-        for (let i = 0; i < domains.length; i++) {
-          const domain = domains[i];
-          const url = `https://${domain}/embed/stream-${channel.number}.php`;
-          
-          try {
-            const controller = new AbortController();
-            const timeout = setTimeout(() => controller.abort(), 2000);
-            await fetch(url, { method: 'HEAD', mode: 'no-cors', signal: controller.signal }).catch(() => {});
-            clearTimeout(timeout);
-            videoFrame.src = url;
-            loaded = true;
-            state.baseDomain = domain;
-            localStorage.setItem('baseDomain', domain);
-            break;
-          } catch (e) {
-            console.warn(`Falló dominio ${domain}`);
-          }
-        }
-        
-        if (!loaded) {
-          videoFrame.src = `https://${domains[0]}/embed/stream-${channel.number}.php`;
-        }
-      }
+  const domains = [
+    { name: 'miztv.top', path: '/total/stream-' },           // Prioridad 1: limpio, sin publicidad
+    { name: 'watchit.my', path: '/embed/stream-' },         // Prioridad 2
+    { name: 'thedaddy.top', path: '/embed/stream-' },
+    { name: 'daddylivestream.com', path: '/embed/stream-' },
+    { name: 'sportybet.top', path: '/embed/stream-' },
+    { name: 'hoofoot.ru', path: '/embed/stream-' },
+    { name: 'teledeportes.top', path: '/embed/stream-' }
+  ];
+  let loaded = false;
+
+  for (let i = 0; i < domains.length; i++) {
+    const dom = domains[i];
+    const url = `https://${dom.name}${dom.path}${channel.number}.php`;
+
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 2000);
+      await fetch(url, { method: 'HEAD', mode: 'no-cors', signal: controller.signal }).catch(() => {});
+      clearTimeout(timeout);
+      videoFrame.src = url;
+      loaded = true;
+      state.baseDomain = dom.name;  // opcional, para recordar el último que funcionó
+      localStorage.setItem('baseDomain', dom.name);
+      break;
+    } catch (e) {
+      console.warn(`Falló dominio ${dom.name}`);
     }
+  }
+
+  if (!loaded) {
+    // Fallback al primero (miztv)
+    videoFrame.src = `https://${domains[0].name}${domains[0].path}${channel.number}.php`;
+  }
+}
 
     function closePlayer() {
       document.getElementById('playerModal').classList.remove('player-modal--active');

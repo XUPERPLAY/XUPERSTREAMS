@@ -4,14 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=0.7, maximum-scale=0.8, user-scalable=no">
   <title>📺 XUPERXTREAMS</title>
-  
-  <!-- Fuentes premium -->
+
+  <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-  
+
   <style>
-    /* Variables CSS */
     :root {
       --primary: #2563eb;
       --primary-rgb: 37, 99, 235;
@@ -31,21 +30,21 @@
       --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       --radius: 8px;
     }
-    
+
     body.light-mode {
       --bg: var(--bg-light);
       --card-bg: var(--card-bg-light);
       --text: var(--text-light);
       --border: var(--border-light);
     }
-    
+
     body.dark-mode {
       --bg: var(--bg-dark);
       --card-bg: var(--card-bg-dark);
       --text: var(--text-dark);
       --border: var(--border-dark);
     }
-    
+
     body {
       background: var(--bg);
       color: var(--text);
@@ -56,7 +55,7 @@
       transition: var(--transition);
       padding-bottom: 60px;
     }
-    
+
     /* Header fijo */
     .app-header {
       background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -67,7 +66,7 @@
       z-index: 1000;
       backdrop-filter: blur(10px);
     }
-    
+
     .header-content {
       max-width: 1400px;
       margin: 0 auto;
@@ -75,20 +74,20 @@
       align-items: center;
       justify-content: space-between;
     }
-    
+
     .logo-container {
       display: flex;
       align-items: center;
       gap: 12px;
     }
-    
+
     .logo-img {
       width: 40px;
       height: 40px;
       border-radius: 50%;
       box-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
-    
+
     .app-title {
       font-family: 'Poppins', sans-serif;
       font-size: 1.25rem;
@@ -97,29 +96,29 @@
       margin: 0;
       text-shadow: 0 1px 2px rgba(0,0,0,0.2);
     }
-    
-    /* Todo el bloque queda fijo al scroll */
+
+    /* Todo el bloque superior queda fijo al hacer scroll */
     .fixed-header {
       position: sticky;
-      top: 56px;
+      top: 0;
       background: var(--bg);
       z-index: 900;
       padding: 0.8rem 0 1.2rem 0;
       box-shadow: var(--shadow-lg);
     }
-    
+
     .main-container {
       max-width: 1400px;
       margin: 0 auto;
       padding: 0 1rem;
     }
-    
-    /* Búsqueda ajustada (no sobresale) */
+
+    /* Búsqueda */
     .search-box {
       position: relative;
       margin-bottom: 0.8rem;
     }
-    
+
     .search-box input {
       width: 100%;
       padding: 0.6rem 1rem 0.6rem 2.4rem;
@@ -130,7 +129,7 @@
       transition: var(--transition);
       box-sizing: border-box;
     }
-    
+
     .search-box::before {
       content: "🔍";
       position: absolute;
@@ -140,13 +139,13 @@
       font-size: 0.9rem;
       pointer-events: none;
     }
-    
+
     .search-box input:focus {
       outline: none;
       border-color: var(--primary);
       box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.1);
     }
-    
+
     /* Botones de filtro */
     .filter-buttons {
       display: flex;
@@ -154,7 +153,7 @@
       margin-top: 0.8rem;
       flex-wrap: wrap;
     }
-    
+
     .filter-button {
       flex: 1;
       padding: 0.3rem 0.5rem;
@@ -170,12 +169,12 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     .filter-button:hover {
       border-color: var(--primary);
       transform: translateY(-1px);
     }
-    
+
     .filter-button--active {
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: white;
@@ -184,15 +183,17 @@
       font-weight: 700;
       transform: scale(1.05);
     }
-    
-    .filter-button--favorites, .filter-button--clear, .filter-button--settings {
+
+    .filter-button--favorites,
+    .filter-button--clear,
+    .filter-button--settings {
       flex: 0 0 auto;
       width: 28px;
       min-width: 28px;
       padding: 0.2rem 0;
       font-size: 1rem;
     }
-    
+
     /* Emoji filtros */
     .emoji-filters {
       display: flex;
@@ -201,7 +202,7 @@
       margin-top: 8px;
       flex-wrap: wrap;
     }
-    
+
     .emoji-filter-btn {
       width: 24px;
       height: 24px;
@@ -215,19 +216,19 @@
       justify-content: center;
       transition: var(--transition);
     }
-    
+
     .emoji-filter-btn:hover {
       transform: scale(1.1);
       border-color: var(--primary);
     }
-    
+
     .emoji-filter-btn--active {
       background: var(--primary);
       color: white;
       border-color: var(--primary);
       transform: scale(1.1);
     }
-    
+
     /* Fecha */
     .fecha-container {
       background: var(--card-bg);
@@ -241,13 +242,13 @@
       align-items: center;
       gap: 10px;
     }
-    
+
     .fecha-valor {
       font-size: 1.1rem;
       font-weight: 600;
       color: var(--primary);
     }
-    
+
     .loading-spinner {
       display: inline-block;
       width: 20px;
@@ -257,16 +258,16 @@
       border-top-color: var(--primary);
       animation: spin 1s ease-in-out infinite;
     }
-    
+
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
-    
+
     @keyframes pulse {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.5; }
     }
-    
+
     /* Grid de canales */
     .channels-grid {
       display: grid;
@@ -275,7 +276,7 @@
       padding-top: 1rem;
       padding-bottom: 2rem;
     }
-    
+
     .channel-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -286,13 +287,13 @@
       transition: var(--transition);
       backdrop-filter: blur(10px);
     }
-    
+
     .channel-card:hover {
       transform: translateY(-3px);
       border-color: var(--primary);
       box-shadow: var(--shadow-lg), 0 0 15px rgba(var(--primary-rgb), 0.2);
     }
-    
+
     .channel-card--active {
       border: 3px solid var(--primary) !important;
       box-shadow: 0 0 25px rgba(var(--primary-rgb), 0.7) !important;
@@ -300,31 +301,31 @@
       position: relative;
       z-index: 5;
     }
-    
+
     .channel-card--favorite {
       border: 2px solid var(--primary);
       box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.3);
     }
-    
+
     .channel-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 0.5rem;
     }
-    
+
     .channel-time {
       font-size: 0.75rem;
       font-weight: 600;
     }
-    
+
     .channel-time--live::before {
       content: "●";
       color: #ef4444;
       animation: pulse 1.5s infinite;
       margin-right: 4px;
     }
-    
+
     .channel-name {
       font-weight: 600;
       flex-grow: 1;
@@ -332,34 +333,34 @@
       text-align: center;
       font-size: 0.9rem;
     }
-    
+
     .channel-name--live::before {
       content: "●";
       color: #ef4444;
       animation: pulse 1.5s infinite;
       margin-right: 4px;
     }
-    
+
     .channel-number {
       color: var(--primary);
       font-weight: 700;
       font-size: 0.75rem;
       white-space: nowrap;
     }
-    
+
     .channel-event {
       font-size: 0.8rem;
       margin-top: 0.3rem;
     }
-    
+
     .channel-sport {
       font-size: 0.7rem;
       color: var(--primary);
       margin-top: 0.2rem;
       font-weight: 500;
     }
-    
-    /* Grupos */
+
+    /* Grupos de eventos */
     .channel-group__header {
       padding: 0.8rem 1rem;
       background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -367,31 +368,31 @@
       border-radius: var(--radius) var(--radius) 0 0;
       color: white;
     }
-    
+
     .channel-group__title {
       font-weight: 600;
       display: flex;
       align-items: center;
       gap: 8px;
     }
-    
+
     .channel-group__sport {
       font-size: 0.8rem;
       opacity: 0.9;
       margin-top: 0.2rem;
     }
-    
+
     .channel-group__content {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 0.8rem;
       padding: 0.8rem;
     }
-    
+
     .channel-group__content--single {
       grid-template-columns: 1fr;
     }
-    
+
     /* Reproductor modal */
     .player-modal {
       position: fixed;
@@ -403,11 +404,11 @@
       z-index: 2000;
       backdrop-filter: blur(8px);
     }
-    
+
     .player-modal--active {
       display: flex;
     }
-    
+
     .player-modal__content {
       background: #000;
       border-radius: var(--radius);
@@ -418,7 +419,7 @@
       position: relative;
       box-shadow: 0 20px 40px rgba(0,0,0,0.6);
     }
-    
+
     #videoFrame {
       width: 100%;
       height: 100%;
@@ -426,7 +427,7 @@
       border-radius: var(--radius);
       object-fit: contain;
     }
-    
+
     .player-modal__close {
       position: absolute;
       top: -50px;
@@ -441,8 +442,8 @@
       cursor: pointer;
       z-index: 10;
     }
-    
-    /* Modal ajustes (sin fuentes de streaming) */
+
+    /* Modal favorito */
     .modal {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -452,11 +453,11 @@
       align-items: center;
       z-index: 1001;
     }
-    
+
     .modal--active {
       display: flex;
     }
-    
+
     .modal__content {
       background: var(--card-bg);
       border-radius: var(--radius);
@@ -465,7 +466,7 @@
       max-width: 380px;
       box-shadow: var(--shadow-lg);
     }
-    
+
     .modal__title {
       margin-bottom: 1rem;
       color: var(--text);
@@ -474,7 +475,7 @@
       align-items: center;
       gap: 10px;
     }
-    
+
     .modal__input {
       width: 100%;
       padding: 0.8rem;
@@ -485,13 +486,13 @@
       margin-bottom: 1.2rem;
       font-size: 1rem;
     }
-    
+
     .modal__actions {
       display: flex;
       justify-content: flex-end;
       gap: 0.8rem;
     }
-    
+
     .modal__btn {
       padding: 0.6rem 1rem;
       border: none;
@@ -500,108 +501,36 @@
       font-weight: 600;
       font-size: 1rem;
     }
-    
+
     .modal__btn--primary {
       background: var(--primary);
       color: white;
     }
-    
+
     .modal__btn--secondary {
       background: var(--border);
       color: var(--text);
     }
-    
-    .settings-section__title {
-      margin: 1rem 0 0.5rem;
-      font-size: 1rem;
-      color: var(--primary);
-      font-weight: 600;
-    }
-    
-    .settings-item {
-      margin-bottom: 1rem;
-    }
-    
-    .settings-item__info {
-      margin-bottom: 0.5rem;
-    }
-    
-    .settings-description {
-      font-size: 0.8rem;
-      opacity: 0.8;
-      display: block;
-    }
-    
-    .settings-switch {
-      position: relative;
-      display: inline-block;
-      width: 50px;
-      height: 26px;
-    }
-    
-    .settings-switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-    
-    .settings-slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
+
+    /* Footer */
+    .app-footer {
+      position: fixed;
+      bottom: 0;
       left: 0;
       right: 0;
-      bottom: 0;
-      background-color: #ccc;
-      transition: .4s;
-      border-radius: 26px;
+      background: var(--card-bg);
+      color: var(--text);
+      text-align: center;
+      padding: 10px 0;
+      font-size: 0.8rem;
+      opacity: 0.8;
+      border-top: 1px solid var(--border);
+      z-index: 800;
     }
-    
-    .settings-slider:before {
-      position: absolute;
-      content: "";
-      height: 20px;
-      width: 20px;
-      left: 3px;
-      bottom: 3px;
-      background-color: white;
-      transition: .4s;
-      border-radius: 50%;
-    }
-    
-    input:checked + .settings-slider {
-      background-color: var(--primary);
-    }
-    
-    input:checked + .settings-slider:before {
-      transform: translateX(24px);
-    }
-    
-    .color-picker {
-      display: flex;
-      gap: 8px;
-    }
-    
-    .color-option {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      cursor: pointer;
-      border: 3px solid transparent;
-      transition: var(--transition);
-    }
-    
-    .color-option.active {
-      border-color: white;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    }
-    
+
     @media (max-width: 768px) {
       .channels-grid {
         grid-template-columns: 1fr;
-      }
-      .fixed-header {
-        top: 52px;
       }
     }
   </style>
@@ -623,7 +552,7 @@
       <div class="search-box">
         <input type="text" id="searchInput" placeholder="Buscar canales, número (ej: #123) o hora (ej: 15:30)">
       </div>
-      
+
       <div class="filter-buttons">
         <button class="filter-button filter-button--favorites" id="filterFavorites" title="Favoritos">⭐</button>
         <button class="filter-button filter-button--active" id="filterAll">Todos</button>
@@ -632,7 +561,7 @@
         <button class="filter-button filter-button--clear" id="clearEmojiFilters" title="Limpiar filtros">❌</button>
         <button class="filter-button filter-button--settings" id="settingsBtn" title="Ajustes">⚙️</button>
       </div>
-      
+
       <div class="emoji-filters" id="emojiFilters">
         <button class="emoji-filter-btn" data-filter="TV Shows" title="TV Shows">📺</button>
         <button class="emoji-filter-btn" data-filter="Fútbol" title="Fútbol">⚽</button>
@@ -644,20 +573,23 @@
         <button class="emoji-filter-btn" data-filter="Formula 1" title="Formula 1">🏎️</button>
         <button class="emoji-filter-btn" data-filter="Spain ES Movistar M+" title="España">🇪🇸</button>
       </div>
-      
+
       <div class="fecha-container" id="fechaContainer">
-        <div class="fecha-valor" id="fecha"></div>
-        <div class="loading-spinner" id="loadingSpinner" style="display: none;"></div>
+        <div class="fecha-valor" id="fecha">Cargando eventos...</div>
+        <div class="loading-spinner" id="loadingSpinner"></div>
       </div>
-      
-      <div id="offlineMessage" class="offline-message" style="display: none;">Modo offline: mostrando canales del historial</div>
     </div>
   </div>
 
-  <!-- Lista de canales (desplazable) -->
+  <!-- Lista de canales -->
   <div class="main-container">
     <div class="channels-grid" id="results"></div>
   </div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    XUPERXTREAMS © 2025 • Canales gratuitos en directo
+  </footer>
 
   <!-- Reproductor modal -->
   <div class="player-modal" id="playerModal">
@@ -667,89 +599,6 @@
     </div>
   </div>
 
-  <!-- Modal ajustes (sin fuentes de streaming) -->
-  <div class="modal" id="settingsModal">
-    <div class="modal__content">
-      <h3 class="modal__title">⚙️ Ajustes</h3>
-      <div class="settings-section">
-        <h4 class="settings-section__title">🎨 Apariencia</h4>
-        <div class="settings-item">
-          <div class="settings-item__info">
-            <span class="settings-icon">🌓</span>
-            <div>
-              <span class="settings-label">Modo oscuro</span>
-              <span class="settings-description">Cambia entre tema claro y oscuro</span>
-            </div>
-          </div>
-          <label class="settings-switch">
-            <input type="checkbox" id="darkModeToggle">
-            <span class="settings-slider"></span>
-          </label>
-        </div>
-        <div class="settings-item">
-          <div class="settings-item__info">
-            <span class="settings-icon">🎨</span>
-            <div>
-              <span class="settings-label">Color principal</span>
-              <span class="settings-description">Personaliza la interfaz</span>
-            </div>
-          </div>
-          <div class="color-picker">
-            <button class="color-option active" data-color="#2563eb" style="background:#2563eb"></button>
-            <button class="color-option" data-color="#dc2626" style="background:#dc2626"></button>
-            <button class="color-option" data-color="#16a34a" style="background:#16a34a"></button>
-            <button class="color-option" data-color="#9333ea" style="background:#9333ea"></button>
-            <button class="color-option" data-color="#f59e0b" style="background:#f59e0b"></button>
-          </div>
-        </div>
-      </div>
-      <div class="settings-section">
-        <div class="settings-item">
-          <div class="settings-item__info">
-            <span class="settings-icon">🌐</span>
-            <div>
-              <span class="settings-label">Filtrar internacionales</span>
-              <span class="settings-description">Oculta canales no españoles</span>
-            </div>
-          </div>
-          <label class="settings-switch">
-            <input type="checkbox" id="internationalFilterToggle">
-            <span class="settings-slider"></span>
-          </label>
-        </div>
-        <div class="settings-item">
-          <div class="settings-item__info">
-            <span class="settings-icon">🗂</span>
-            <div>
-              <span class="settings-label">Agrupar canales</span>
-              <span class="settings-description">Organiza por eventos</span>
-            </div>
-          </div>
-          <label class="settings-switch">
-            <input type="checkbox" id="groupChannelsToggle" checked>
-            <span class="settings-slider"></span>
-          </label>
-        </div>
-        <div class="settings-item">
-          <div class="settings-item__info">
-            <span class="settings-icon">⏱️</span>
-            <div>
-              <span class="settings-label">Ordenar por hora</span>
-              <span class="settings-description">Muestra próximos primero</span>
-            </div>
-          </div>
-          <label class="settings-switch">
-            <input type="checkbox" id="sortByTimeToggle" checked>
-            <span class="settings-slider"></span>
-          </label>
-        </div>
-      </div>
-      <div class="modal__actions">
-        <button class="modal__btn modal__btn--primary" id="closeSettingsBtn">Cerrar</button>
-      </div>
-    </div>
-  </div>
-  
   <!-- Modal favorito -->
   <div class="modal" id="favoriteModal">
     <div class="modal__content">
@@ -772,13 +621,11 @@
       customNames: JSON.parse(localStorage.getItem('customNames')) || {},
       channelHistory: JSON.parse(localStorage.getItem('channelHistory')) || {},
       currentChannel: null,
-      baseDomain: localStorage.getItem('baseDomain') || 'watchit.my',
       internationalFilter: localStorage.getItem('internationalFilter') === 'true',
       groupChannels: localStorage.getItem('groupChannels') !== 'false',
       sortByTime: localStorage.getItem('sortByTime') !== 'false',
       darkMode: localStorage.getItem('darkMode') === 'true',
       isOnline: navigator.onLine,
-      firstLoad: true,
       filteredKeywords: [
         "Cricket", "Russia", "France", "Golf", "IT", "PL", "Slovakia", "Sweden",
         "Bulgaria", "NZ", "BR", "Morocco", "Hungary", "Tennis", "DE", "NL",
@@ -814,7 +661,7 @@
         const cleanedStr = dateStr.replace(/[^a-zA-Z0-9\s]/g, '').trim();
         const parts = cleanedStr.split(/\s+/).filter(p => p.length > 0);
         if (parts.length < 3) return dateStr;
-        
+
         const dayTranslations = {
           'Mon': 'Lunes', 'Tue': 'Martes', 'Wed': 'Miércoles', 'Thu': 'Jueves', 'Fri': 'Viernes', 'Sat': 'Sábado', 'Sun': 'Domingo',
           'Monday': 'Lunes', 'Tuesday': 'Martes', 'Wednesday': 'Miércoles', 'Thursday': 'Jueves', 'Friday': 'Viernes', 'Saturday': 'Sábado', 'Sunday': 'Domingo'
@@ -828,7 +675,7 @@
         const dayName = dayTranslations[normalize(parts[0])] || parts[0];
         const month = monthTranslations[normalize(parts[2])] || parts[2];
         const yearSegment = parts[3] ? ` de ${parts[3]}` : '';
-        
+
         return `${dayName} ${parts[1]} de ${month}${yearSegment}`.trim();
       } catch (e) {
         return dateStr;
@@ -844,57 +691,57 @@
 
     async function playChannel(channel) {
       state.currentChannel = channel;
-      
+
       if (!state.channelHistory[channel.number] || 
           state.channelHistory[channel.number].names[0] !== channel.name) {
         syncChannelHistory();
       }
-      
+
       document.querySelectorAll('.channel-card').forEach(card => {
         card.classList.remove('channel-card--active');
       });
       const activeCards = document.querySelectorAll(`.channel-card[onclick*='"number":"${channel.number}"']`);
       activeCards.forEach(card => card.classList.add('channel-card--active'));
-      
+
       document.getElementById('playerModal').classList.add('player-modal--active');
-      
+
       const videoFrame = document.getElementById('videoFrame');
+
       if (state.isOnline) {
-  const domains = [
-    { name: 'miztv.top', path: '/total/stream-' },           // Prioridad 1: limpio, sin publicidad
-    { name: 'watchit.my', path: '/embed/stream-' },         // Prioridad 2
-    { name: 'thedaddy.top', path: '/embed/stream-' },
-    { name: 'daddylivestream.com', path: '/embed/stream-' },
-    { name: 'sportybet.top', path: '/embed/stream-' },
-    { name: 'hoofoot.ru', path: '/embed/stream-' },
-    { name: 'teledeportes.top', path: '/embed/stream-' }
-  ];
-  let loaded = false;
+        const domains = [
+          { name: 'miztv.top', path: '/total/stream-' },           // Prioridad 1: limpio, sin links/share
+          { name: 'watchit.my', path: '/embed/stream-' },
+          { name: 'thedaddy.top', path: '/embed/stream-' },
+          { name: 'daddylivestream.com', path: '/embed/stream-' },
+          { name: 'sportybet.top', path: '/embed/stream-' },
+          { name: 'hoofoot.ru', path: '/embed/stream-' },
+          { name: 'teledeportes.top', path: '/embed/stream-' }
+        ];
+        let loaded = false;
 
-  for (let i = 0; i < domains.length; i++) {
-    const dom = domains[i];
-    const url = `https://${dom.name}${dom.path}${channel.number}.php`;
+        for (let i = 0; i < domains.length; i++) {
+          const dom = domains[i];
+          const url = `https://${dom.name}${dom.path}${channel.number}.php`;
 
-    try {
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 2000);
-      await fetch(url, { method: 'HEAD', mode: 'no-cors', signal: controller.signal }).catch(() => {});
-      clearTimeout(timeout);
-      videoFrame.src = url;
-      loaded = true;
-      state.baseDomain = dom.name;  // opcional, para recordar el último que funcionó
-      localStorage.setItem('baseDomain', dom.name);
-      break;
-    } catch (e) {
-      console.warn(`Falló dominio ${dom.name}`);
+          try {
+            const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), 2000);
+            await fetch(url, { method: 'HEAD', mode: 'no-cors', signal: controller.signal }).catch(() => {});
+            clearTimeout(timeout);
+            videoFrame.src = url;
+            loaded = true;
+            localStorage.setItem('baseDomain', dom.name);
+            break;
+          } catch (e) {
+            console.warn(`Falló ${dom.name}`);
+          }
+        }
+
+        if (!loaded) {
+          videoFrame.src = `https://miztv.top/total/stream-${channel.number}.php`;
+        }
+      }
     }
-  }
-
-  if (!loaded) {
-    // Fallback al primero (miztv)
-    videoFrame.src = `https://${domains[0].name}${domains[0].path}${channel.number}.php`;
-  }
-}
 
     function closePlayer() {
       document.getElementById('playerModal').classList.remove('player-modal--active');
@@ -904,7 +751,7 @@
     function playChannelByNumber(number) {
       const channelNumber = String(number);
       const existingChannel = state.channels.find(c => c.number === channelNumber);
-      
+
       if (existingChannel) {
         playChannel(existingChannel);
       } else {
@@ -1007,14 +854,14 @@
     function isChannelLive(channel) {
       if (state.currentFilter === 'history' || !channel.time) return false;
       if (channel.time === 'LIVE') return true;
-      
+
       const now = new Date();
       const currentTime = now.getHours() * 60 + now.getMinutes();
       const [h, m] = channel.time.split(':').map(Number);
       const adjustedHours = (h + 1) % 24;
       const eventTime = adjustedHours * 60 + m;
       const duration = getEventDuration(channel);
-      
+
       return currentTime >= eventTime - 15 && currentTime <= eventTime + duration;
     }
 
@@ -1039,12 +886,12 @@
         } else {
           const historyEntry = state.channelHistory[number];
           const currentName = currentChannelsMap[number].name;
-          
+
           if (historyEntry.names[0] !== currentName) {
             historyEntry.names.unshift(currentName);
             historyEntry.names = historyEntry.names.slice(0, 3);
           }
-          
+
           if (currentChannelsMap[number].event) historyEntry.event = currentChannelsMap[number].event;
           if (currentChannelsMap[number].sport) historyEntry.sport = currentChannelsMap[number].sport;
           historyEntry.lastUpdated = new Date().toISOString();
@@ -1072,11 +919,11 @@
       }
 
       let filtered = state.isOnline ? state.channels : [];
-      
+
       filtered = filtered.filter(channel => {
         if (state.currentFilter === 'favorites' && !state.favorites.includes(channel.number)) return false;
         if (state.currentFilter === 'live' && !isChannelLive(channel)) return false;
-        
+
         if (state.searchTerm) {
           const term = state.searchTerm.toLowerCase();
           if (/^#?\d+$/.test(term)) {
@@ -1088,12 +935,12 @@
             if (!match) return false;
           }
         }
-        
+
         if (state.activeEmojiFilters.includes('Spain ES Movistar M+')) {
           const espanol = /spain|españa|movistar|m\+|liga|esp|es |es$|teledeporte|gol/i.test(channel.name.toLowerCase());
           if (!espanol) return false;
         }
-        
+
         if (state.internationalFilter) {
           const channelName = channel.name;
           if (state.filteredKeywords.some(keyword => 
@@ -1101,7 +948,7 @@
             return false;
           }
         }
-        
+
         if (state.activeEmojiFilters.length > 0 && !state.activeEmojiFilters.includes('Spain ES Movistar M+')) {
           const matches = state.activeEmojiFilters.some(filter => {
             if (channel.sport.includes(filter) || channel.event.includes(filter)) return true;
@@ -1110,7 +957,7 @@
           });
           if (!matches) return false;
         }
-        
+
         return true;
       });
 
@@ -1119,20 +966,20 @@
         const bFav = state.favorites.includes(b.number);
         if (aFav && !bFav) return -1;
         if (!aFav && bFav) return 1;
-        
+
         if (state.currentFilter === 'live' || state.sortByTime) {
           if (a.time === 'LIVE' && b.time !== 'LIVE') return -1;
           if (a.time !== 'LIVE' && b.time === 'LIVE') return 1;
-          
+
           const timeA = a.time ? a.time.split(':').map(Number) : [99, 99];
           const timeB = b.time ? b.time.split(':').map(Number) : [99, 99];
           const adjustedA = (timeA[0] + 18) % 24;
           const adjustedB = (timeB[0] + 18) % 24;
-          
+
           if (adjustedA !== adjustedB) return adjustedA - adjustedB;
           return timeA[1] - timeB[1];
         }
-        
+
         return 0;
       });
 
@@ -1142,7 +989,7 @@
     function renderResults() {
       const filtered = filterChannels();
       const container = document.getElementById('results');
-      
+
       if (filtered.length === 0) {
         container.innerHTML = `
           <div style="text-align:center;padding:3rem;color:var(--text);opacity:0.6;">
@@ -1153,7 +1000,7 @@
         `;
         return;
       }
-      
+
       if (state.groupChannels && state.currentFilter !== 'history') {
         renderGrouped(filtered, container);
       } else {
@@ -1168,7 +1015,7 @@
         if (!groups[key]) groups[key] = [];
         groups[key].push(ch);
       });
-      
+
       container.innerHTML = Object.entries(groups).sort((a, b) => {
         const timeA = a[0].split('|')[0];
         const timeB = b[0].split('|')[0];
@@ -1202,11 +1049,11 @@
       const isFavorite = state.favorites.includes(channel.number);
       const isLive = isChannelLive(channel);
       const displayName = state.customNames[channel.number] || channel.name;
-      
+
       let flag = '';
       let langCode = '';
       const nameLower = channel.name.toLowerCase();
-      
+
       if (/uk|england|english|espn|sky sports/i.test(nameLower)) { flag = '🇬🇧'; langCode = 'UK'; }
       else if (/es|españa|esp|spanish|castellano|movistar|gol|bein la liga|teledeporte/i.test(nameLower)) { flag = '🇪🇸'; langCode = 'ES'; }
       else if (/it|italia|italian|sky sport italia/i.test(nameLower)) { flag = '🇮🇹'; langCode = 'IT'; }
@@ -1216,7 +1063,7 @@
       else if (/ru|russia|russian|match tv/i.test(nameLower)) { flag = '🇷🇺'; langCode = 'RU'; }
       else if (/us|usa|american|fox|abc|nbc|cbs|espn/i.test(nameLower)) { flag = '🇺🇸'; langCode = 'US'; }
       else { flag = '🌍'; langCode = 'INT'; }
-      
+
       return `
         <div class="channel-card ${isFavorite ? 'channel-card--favorite' : ''}" 
              onclick='playChannel(${JSON.stringify(channel).replace(/'/g, "\\\\'")})'>
@@ -1237,97 +1084,71 @@
 
     async function scrape() {
       document.getElementById('loadingSpinner').style.display = 'inline-block';
-      document.getElementById('fecha').textContent = 'Cargando...';
-      
-      if (state.channels.length > 0) {
-        renderResults();
-      }
+      document.getElementById('fecha').textContent = 'Cargando eventos...';
+
+      // Mostrar caché inmediatamente
+      renderResults();
 
       try {
-        if (!state.isOnline) {
-          document.getElementById('loadingSpinner').style.display = 'none';
-          renderResults();
-          return;
-        }
-        
         const proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent("https://daddylives.top/match-schedule/");
         const response = await fetch(proxyUrl);
-        
-        if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
-        
+
+        if (!response.ok) throw new Error("Error al cargar");
+
         const html = await response.text();
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, "text/html");
-        
+
         const scheduleTitle = doc.querySelector("h1, .daddy-schedule-title, .entry-title");
-        let fechaExtraida = "";
-        
+        let fechaExtraida = "Hoy";
         if (scheduleTitle) {
           const titleText = scheduleTitle.textContent.split('–')[0].trim();
           fechaExtraida = translateDate(titleText);
         }
-        
-        document.getElementById('fecha').textContent = fechaExtraida || "Fecha no reconocida";
-        
+        document.getElementById('fecha').textContent = fechaExtraida;
+
         const newChannels = [];
         const matchCategories = doc.querySelectorAll(".match-category");
 
         matchCategories.forEach(category => {
           const emojiElement = category.querySelector(".emoji-icon");
           const titleElement = category.querySelector(".category-title");
-          
           if (!emojiElement || !titleElement) return;
 
           const categorySport = titleElement.textContent.trim().replace(/\(\d+\)/, '').trim();
           let categoryEmoji = emojiElement.textContent.trim();
-          
+
           const lowerCaseSport = categorySport.toLowerCase();
-          
-          if (/soccer|fútbol|futbol|foot/i.test(lowerCaseSport)) {
-              categoryEmoji = '⚽'; 
-          } else if (/baseball|beisbol|mlb/i.test(lowerCaseSport)) {
-              categoryEmoji = '⚾'; 
-          } else if (/hockey|nhl/i.test(lowerCaseSport)) {
-              categoryEmoji = '🏒'; 
-          } else if (/wnba/i.test(lowerCaseSport)) {
-              categoryEmoji = '🏀'; 
-          }
-          
+          if (/soccer|fútbol|futbol|foot/i.test(lowerCaseSport)) categoryEmoji = '⚽';
+          else if (/baseball|beisbol|mlb/i.test(lowerCaseSport)) categoryEmoji = '⚾';
+          else if (/hockey|nhl/i.test(lowerCaseSport)) categoryEmoji = '🏒';
+          else if (/wnba/i.test(lowerCaseSport)) categoryEmoji = '🏀';
+
           const matchSections = category.querySelectorAll(".match-section");
 
           matchSections.forEach(section => {
             const timeElement = section.querySelector(".time");
             const matchNameElement = section.querySelector(".match-name");
             const linksContainer = section.querySelector(".links");
-            
             if (!timeElement || !matchNameElement || !linksContainer) return;
-            
+
             const time = timeElement.textContent.split(' ')[0].trim();
             const matchName = matchNameElement.textContent.trim();
             const links = linksContainer.querySelectorAll(".link-button");
-            
-            if (links.length === 0) return;
-            
+
             links.forEach(link => {
               const canalTexto = link.textContent.trim();
               const canalMatch = canalTexto.match(/CH-(\d+)/i);
-              
               if (canalMatch) {
                 const numero = canalMatch[1];
-                const nombreCanal = canalTexto;
-                const watchUrl = link.getAttribute('data-watch-url') || link.getAttribute('href') || '';
-                
-                if (numero) {
-                  newChannels.push({ 
-                    number: numero, 
-                    name: nombreCanal, 
-                    url: watchUrl.includes('http') ? watchUrl : `https://daddylives.top/embed/stream-${numero}.php`, 
-                    time: time, 
-                    event: matchName, 
-                    sport: categorySport,
-                    emoji: categoryEmoji
-                  });
-                }
+                newChannels.push({
+                  number: numero,
+                  name: canalTexto,
+                  time: time,
+                  event: matchName,
+                  sport: categorySport,
+                  emoji: categoryEmoji
+                });
               }
             });
           });
@@ -1338,90 +1159,41 @@
           localStorage.setItem('channelsCache', JSON.stringify(newChannels));
           syncChannelHistory();
         }
-        
+
         renderResults();
       } catch (err) {
-        console.error('Error al cargar datos:', err);
+        console.error('Error scrape:', err);
+        document.getElementById('fecha').textContent = 'Eventos del caché (sin conexión)';
         renderResults();
       } finally {
         document.getElementById('loadingSpinner').style.display = 'none';
       }
     }
 
-    function changePrimaryColor(color) {
-      const rgb = hexToRgb(color);
-      document.documentElement.style.setProperty('--primary', color);
-      document.documentElement.style.setProperty('--primary-rgb', `${rgb.r}, ${rgb.g}, ${rgb.b}`);
-      document.documentElement.style.setProperty('--primary-dark', shadeColor(color, -20));
-      
-      document.querySelectorAll('.color-option').forEach(btn => 
-        btn.classList.remove('active'));
-      document.querySelector(`[data-color="${color}"]`).classList.add('active');
-      localStorage.setItem('primaryColor', color);
-    }
-
-    function hexToRgb(hex) {
-      const r = parseInt(hex.slice(1,3), 16);
-      const g = parseInt(hex.slice(3,5), 16);
-      const b = parseInt(hex.slice(5,7), 16);
-      return { r, g, b };
-    }
-
-    function shadeColor(color, percent) {
-      let R = parseInt(color.substring(1,3), 16);
-      let G = parseInt(color.substring(3,5), 16);
-      let B = parseInt(color.substring(5,7), 16);
-      R = parseInt(R * (100 + percent) / 100);
-      G = parseInt(G * (100 + percent) / 100);
-      B = parseInt(B * (100 + percent) / 100);
-      R = (R<255)?R:255; G = (G<255)?G:255; B = (B<255)?B:255;
-      return `#${R.toString(16).padStart(2,'0')}${G.toString(16).padStart(2,'0')}${B.toString(16).padStart(2,'0')}`;
-    }
-
-    let pressTimer;
-    const LONG_PRESS_DURATION = 700;
-    const clearBtn = document.getElementById('clearEmojiFilters');
-    
-    clearBtn.addEventListener('mousedown', (e) => {
-      pressTimer = setTimeout(() => {
-        document.getElementById('settingsModal').classList.add('modal--active');
-        e.preventDefault();
-      }, LONG_PRESS_DURATION);
-    });
-    
-    clearBtn.addEventListener('mouseup', () => clearTimeout(pressTimer));
-    clearBtn.addEventListener('mouseleave', () => clearTimeout(pressTimer));
-    clearBtn.addEventListener('click', (e) => {
-      if (!pressTimer) return;
-      clearTimeout(pressTimer);
-      clearEmojiFilters();
-    });
-
     document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.toggle('dark-mode', state.darkMode);
       document.body.classList.toggle('light-mode', !state.darkMode);
-      
-      const savedColor = localStorage.getItem('primaryColor') || '#2563eb';
-      changePrimaryColor(savedColor);
-      
-      document.getElementById('darkModeToggle').checked = state.darkMode;
-      document.getElementById('internationalFilterToggle').checked = state.internationalFilter;
-      document.getElementById('groupChannelsToggle').checked = state.groupChannels;
-      document.getElementById('sortByTimeToggle').checked = state.sortByTime;
-      
+
+      document.getElementById('darkModeToggle')?.addEventListener('change', (e) => {
+        state.darkMode = e.target.checked;
+        document.body.classList.toggle('dark-mode', state.darkMode);
+        document.body.classList.toggle('light-mode', !state.darkMode);
+        localStorage.setItem('darkMode', state.darkMode);
+      });
+
       document.getElementById('filterAll').addEventListener('click', () => applyFilter('all'));
       document.getElementById('filterLive').addEventListener('click', () => applyFilter('live'));
       document.getElementById('filterHistory').addEventListener('click', () => applyFilter('history'));
-      
+
       document.querySelectorAll('.emoji-filter-btn').forEach(btn => {
         btn.addEventListener('click', () => toggleEmojiFilter(btn.dataset.filter, btn));
       });
-      
+
       document.getElementById('searchInput').addEventListener('input', (e) => {
         state.searchTerm = e.target.value;
         renderResults();
       });
-      
+
       document.getElementById('searchInput').addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
           const value = e.target.value.trim();
@@ -1430,52 +1202,19 @@
           }
         }
       });
-      
+
       document.getElementById('filterFavorites').addEventListener('click', () => {
         if (state.currentChannel) {
           document.getElementById('favoriteModal').classList.add('modal--active');
         }
       });
-      
+
       document.getElementById('closePlayerBtn').addEventListener('click', closePlayer);
-      
+
       document.getElementById('settingsBtn').addEventListener('click', () => {
-        document.getElementById('settingsModal').classList.add('modal--active');
+        alert('Ajustes aún no implementados completamente');
       });
-      
-      document.getElementById('closeSettingsBtn').addEventListener('click', () => {
-        document.getElementById('settingsModal').classList.remove('modal--active');
-      });
-      
-      document.getElementById('darkModeToggle').addEventListener('change', (e) => {
-        state.darkMode = e.target.checked;
-        document.body.classList.toggle('dark-mode', state.darkMode);
-        document.body.classList.toggle('light-mode', !state.darkMode);
-        localStorage.setItem('darkMode', state.darkMode);
-      });
-      
-      document.getElementById('internationalFilterToggle').addEventListener('change', (e) => {
-        state.internationalFilter = e.target.checked;
-        localStorage.setItem('internationalFilter', state.internationalFilter);
-        renderResults();
-      });
-      
-      document.getElementById('groupChannelsToggle').addEventListener('change', (e) => {
-        state.groupChannels = e.target.checked;
-        localStorage.setItem('groupChannels', state.groupChannels);
-        renderResults();
-      });
-      
-      document.getElementById('sortByTimeToggle').addEventListener('change', (e) => {
-        state.sortByTime = e.target.checked;
-        localStorage.setItem('sortByTime', state.sortByTime);
-        renderResults();
-      });
-      
-      document.querySelectorAll('.color-option').forEach(btn => {
-        btn.addEventListener('click', () => changePrimaryColor(btn.dataset.color));
-      });
-      
+
       document.getElementById('saveFavoriteBtn').addEventListener('click', () => {
         if (!state.currentChannel) return;
         const name = document.getElementById('favoriteNameInput').value.trim();
@@ -1491,28 +1230,26 @@
         document.getElementById('favoriteNameInput').value = '';
         renderResults();
       });
-      
+
       document.getElementById('cancelFavoriteBtn').addEventListener('click', () => {
         document.getElementById('favoriteModal').classList.remove('modal--active');
         document.getElementById('favoriteNameInput').value = '';
       });
-      
+
       window.addEventListener('online', () => {
         state.isOnline = true;
-        document.getElementById('offlineMessage').style.display = 'none';
         scrape();
       });
-      
+
       window.addEventListener('offline', () => {
         state.isOnline = false;
-        document.getElementById('offlineMessage').style.display = 'block';
         renderResults();
       });
-      
+
+      // Carga inmediata
       renderResults();
       scrape();
     });
   </script>
 </body>
 </html>
-
